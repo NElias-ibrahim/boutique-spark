@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { ArrowRight, Clock, Coffee, Gift, Heart, MapPin, MessageSquare, PackageCheck, Phone, ReceiptText, ShoppingBasket, Sparkles, Star, Store } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { NavLink } from "@/components/NavLink";
@@ -150,7 +150,8 @@ const PageIntro = ({ kicker, title, text }: { kicker: string; title: string; tex
 );
 
 const Index = () => {
-  const path = window.location.pathname;
+  const { pathname } = useLocation();
+  const path = pathname.replace(/^\/boutique-spark/, "") || "/";
   if (path === "/selection") return <Selection />;
   if (path === "/quartier") return <Quartier />;
   if (path === "/contact") return <Contact />;
