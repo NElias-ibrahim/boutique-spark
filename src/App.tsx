@@ -13,7 +13,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
+      <BrowserRouter basename="/boutique-spark/">
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/selection" element={<Index />} />
