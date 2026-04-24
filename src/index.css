@@ -8,48 +8,48 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 43 42% 96%;
-    --foreground: 165 24% 12%;
+    --background: 50 45% 95%;
+    --foreground: 216 31% 14%;
 
-    --card: 38 50% 98%;
-    --card-foreground: 165 24% 12%;
+    --card: 48 56% 98%;
+    --card-foreground: 216 31% 14%;
 
-    --popover: 38 50% 98%;
-    --popover-foreground: 165 24% 12%;
+    --popover: 48 56% 98%;
+    --popover-foreground: 216 31% 14%;
 
-    --primary: 154 31% 30%;
-    --primary-foreground: 43 42% 96%;
+    --primary: 214 42% 23%;
+    --primary-foreground: 50 45% 95%;
 
-    --secondary: 30 86% 60%;
-    --secondary-foreground: 165 24% 12%;
+    --secondary: 44 92% 64%;
+    --secondary-foreground: 216 31% 14%;
 
-    --muted: 54 22% 88%;
-    --muted-foreground: 157 10% 38%;
+    --muted: 66 24% 88%;
+    --muted-foreground: 215 13% 38%;
 
-    --accent: 2 62% 54%;
-    --accent-foreground: 43 42% 96%;
+    --accent: 8 78% 58%;
+    --accent-foreground: 50 45% 95%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 42 22% 78%;
-    --input: 42 22% 78%;
-    --ring: 154 31% 30%;
+    --border: 216 16% 77%;
+    --input: 216 16% 77%;
+    --ring: 214 42% 23%;
 
     --radius: 0.45rem;
-    --shop-ink: 165 24% 12%;
-    --shop-paper: 43 42% 96%;
-    --shop-tile: 38 50% 98%;
-    --shop-seal: 154 31% 30%;
-    --shop-gold: 30 86% 60%;
-    --shop-coral: 2 62% 54%;
-    --shop-mint: 115 24% 82%;
-    --gradient-hero: linear-gradient(135deg, hsl(var(--shop-paper)) 0%, hsl(var(--shop-mint)) 48%, hsl(var(--secondary) / 0.72) 100%);
+    --shop-ink: 216 31% 14%;
+    --shop-paper: 50 45% 95%;
+    --shop-tile: 48 56% 98%;
+    --shop-seal: 214 42% 23%;
+    --shop-gold: 44 92% 64%;
+    --shop-coral: 8 78% 58%;
+    --shop-mint: 153 28% 79%;
+    --gradient-hero: linear-gradient(135deg, hsl(var(--shop-tile)) 0%, hsl(var(--secondary) / 0.82) 48%, hsl(var(--shop-mint)) 100%);
     --gradient-cta: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
-    --gradient-soft: radial-gradient(circle at 12% 18%, hsl(var(--secondary) / 0.22), transparent 26%), radial-gradient(circle at 86% 18%, hsl(var(--shop-mint) / 0.42), transparent 24%), hsl(var(--background));
-    --shadow-card: 0 18px 55px -35px hsl(var(--shop-ink) / 0.45);
-    --shadow-lift: 0 24px 70px -34px hsl(var(--primary) / 0.5);
-    --texture-lines: repeating-linear-gradient(90deg, hsl(var(--foreground) / 0.055) 0 1px, transparent 1px 36px);
+    --gradient-soft: radial-gradient(circle at 18% 18%, hsl(var(--secondary) / 0.28), transparent 24%), radial-gradient(circle at 80% 6%, hsl(var(--accent) / 0.12), transparent 22%), hsl(var(--background));
+    --shadow-card: 8px 8px 0 hsl(var(--foreground) / 0.12);
+    --shadow-lift: 12px 12px 0 hsl(var(--primary) / 0.18);
+    --texture-lines: repeating-linear-gradient(-8deg, hsl(var(--foreground) / 0.052) 0 1px, transparent 1px 18px);
 
     --sidebar-background: 0 0% 98%;
 
@@ -121,7 +121,8 @@ All colors MUST be HSL.
   h1,
   h2,
   h3 {
-    font-family: ui-serif, Georgia, Cambria, "Times New Roman", serif;
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-weight: 850;
     letter-spacing: 0;
   }
 
@@ -137,7 +138,7 @@ All colors MUST be HSL.
   }
 
   .commerce-grid {
-    background-image: linear-gradient(hsl(var(--foreground) / 0.07) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground) / 0.07) 1px, transparent 1px);
-    background-size: 46px 46px;
+    background-image: radial-gradient(hsl(var(--foreground) / 0.16) 1px, transparent 1px);
+    background-size: 18px 18px;
   }
 }
