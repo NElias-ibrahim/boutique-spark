@@ -1,31 +1,31 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, BadgeCheck, Boxes, MessageCircle, PackageCheck, ShieldCheck, Sparkles, Store, TicketPercent } from "lucide-react";
+import { ArrowRight, Clock3, HeartHandshake, MapPin, Menu, Package, Phone, ShoppingBag, Star, Store, Wheat } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { NavLink } from "@/components/NavLink";
 
 const products = [
-  { name: "Starter Pack boutique", price: "29€", detail: "Identité, salon Discord, 12 fiches produit." },
-  { name: "Cartes premium", price: "à partir de 7€", detail: "Codes, gift cards, boosts et lots vérifiés." },
-  { name: "Réassort express", price: "48h", detail: "Commande groupée, suivi clair, preuve d'achat." },
+  { name: "Panier du matin", price: "12€", detail: "Viennoiseries, pain frais et petite douceur du jour." },
+  { name: "Formule voisine", price: "8€", detail: "Sandwich maison, boisson fraîche et dessert simple." },
+  { name: "Lot à offrir", price: "25€", detail: "Assortiment préparé avec emballage soigné." },
 ];
 
-const steps = ["Choix du lot", "Vérification vendeur", "Paiement sécurisé", "Livraison Discord"];
+const navItems = [
+  ["/", "Accueil"],
+  ["/catalogue", "Produits"],
+  ["/histoire", "La boutique"],
+  ["/contact", "Contact"],
+];
 
 const Layout = ({ children }: { children: React.ReactNode }) => (
   <div className="min-h-screen storefront-beam">
-    <header className="sticky top-0 z-30 border-b border-border/70 bg-background/85 backdrop-blur-xl">
+    <header className="sticky top-0 z-30 border-b border-border bg-background/90 backdrop-blur-xl">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8" aria-label="Navigation principale">
         <Link to="/" className="flex items-center gap-3 font-semibold text-foreground">
-          <span className="grid size-10 place-items-center rounded-md bg-primary text-primary-foreground shadow-card"><Store className="size-5" /></span>
-          <span className="text-lg">Comptoir Nova</span>
+          <span className="grid size-10 place-items-center rounded-md bg-primary text-primary-foreground shadow-card"><Wheat className="size-5" /></span>
+          <span className="text-lg">Maison Lorette</span>
         </Link>
         <div className="hidden items-center gap-1 md:flex">
-          {[
-            ["/", "Accueil"],
-            ["/catalogue", "Catalogue"],
-            ["/process", "Process"],
-            ["/contact", "Contact"],
-          ].map(([to, label]) => (
+          {navItems.map(([to, label]) => (
             <NavLink key={to} to={to} className="rounded-md px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground" activeClassName="bg-card text-foreground shadow-card">
               {label}
             </NavLink>
@@ -41,33 +41,38 @@ const Layout = ({ children }: { children: React.ReactNode }) => (
 const Home = () => (
   <Layout>
     <main>
-      <section className="relative overflow-hidden px-5 pb-16 pt-14 lg:px-8 lg:pb-24 lg:pt-20">
-        <div className="pointer-events-none absolute inset-x-8 top-20 h-64 rounded-full bg-hero opacity-40 blur-3xl motion-safe:animate-beam-drift" aria-hidden="true" />
-        <div className="relative mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+      <section className="mx-auto grid max-w-7xl gap-10 px-5 py-12 lg:grid-cols-[0.95fr_1.05fr] lg:px-8 lg:py-16">
+        <div className="flex min-h-[560px] flex-col justify-between rounded-lg border border-border bg-card p-7 shadow-lift lg:p-10">
           <div className="animate-soft-rise">
-            <p className="mb-5 inline-flex items-center gap-2 rounded-md border border-primary/20 bg-card px-3 py-2 text-sm font-semibold text-primary shadow-card"><Sparkles className="size-4" /> Template vitrine petit commerce</p>
-            <h1 className="max-w-4xl text-5xl font-bold leading-[0.98] text-foreground md:text-7xl">Une boutique claire pour vendre local, en ligne ou sur Discord.</h1>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">Un template multi-pages pour présenter des produits physiques, des cartes, des lots numériques ou des services de petit vendeur avec une ambiance sérieuse, chaleureuse et mémorable.</p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Button asChild variant="storefront" size="lg"><Link to="/catalogue">Voir le catalogue <ArrowRight className="size-4" /></Link></Button>
-              <Button asChild variant="market" size="lg"><Link to="/process">Comment ça marche</Link></Button>
-            </div>
+            <p className="mb-6 inline-flex items-center gap-2 rounded-md bg-muted px-3 py-2 text-sm font-semibold text-primary"><Store className="size-4" /> Boutique de quartier</p>
+            <h1 className="text-5xl font-bold leading-none md:text-7xl">Du frais, du simple, du proche.</h1>
+            <p className="mt-6 max-w-xl text-lg leading-8 text-muted-foreground">Un template vitrine chaleureux pour une boulangerie, épicerie, fleuriste, coffee shop ou petite boutique qui veut inspirer confiance sans en faire trop.</p>
           </div>
-          <div className="commerce-grid rounded-lg border border-border bg-card/80 p-4 shadow-lift backdrop-blur animate-soft-rise [animation-delay:120ms]">
-            <div className="rounded-md bg-background p-5 shadow-card">
-              <div className="mb-5 flex items-center justify-between"><span className="text-sm font-bold text-primary">Stock du jour</span><BadgeCheck className="size-5 text-primary" /></div>
-              <div className="space-y-3">
-                {products.map((item) => <ProductRow key={item.name} {...item} />)}
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <Button asChild variant="storefront" size="lg"><Link to="/catalogue">Voir les produits <ArrowRight className="size-4" /></Link></Button>
+            <Button asChild variant="market" size="lg"><Link to="/histoire">Découvrir la boutique</Link></Button>
+          </div>
+        </div>
+        <div className="grid gap-4 lg:grid-rows-[1fr_auto]">
+          <div className="commerce-grid relative overflow-hidden rounded-lg border border-border bg-hero p-6 shadow-lift">
+            <div className="absolute right-8 top-8 h-28 w-28 rounded-full border border-primary/25 motion-safe:animate-beam-drift" aria-hidden="true" />
+            <div className="relative flex h-full min-h-[380px] flex-col justify-end">
+              <div className="max-w-md rounded-lg bg-card/90 p-6 shadow-card backdrop-blur">
+                <p className="text-sm font-bold uppercase tracking-normal text-primary">Aujourd'hui</p>
+                <h2 className="mt-3 text-3xl font-bold">Pains chauds, paniers prêts et accueil comme à la maison.</h2>
               </div>
             </div>
           </div>
+          <div className="grid gap-4 sm:grid-cols-3">
+            <MiniStat icon={Clock3} label="Ouvert" value="7h — 19h" />
+            <MiniStat icon={MapPin} label="Quartier" value="Centre-ville" />
+            <MiniStat icon={Star} label="Avis" value="4,9/5" />
+          </div>
         </div>
       </section>
-      <section className="border-y border-border/70 bg-card/65 px-5 py-12 lg:px-8">
-        <div className="mx-auto grid max-w-7xl gap-4 md:grid-cols-3">
-          <Feature icon={ShieldCheck} title="Confiance d'abord" text="Preuves, avis, conditions et délais visibles sans blabla." />
-          <Feature icon={MessageCircle} title="Pensé Discord" text="Boutons d'appel, process DM et livraison de codes intégrés." />
-          <Feature icon={Boxes} title="Adaptable" text="Convient aux cartes, snacks, accessoires, services et reventes." />
+      <section className="border-y border-border bg-card/70 px-5 py-12 lg:px-8">
+        <div className="mx-auto grid max-w-7xl gap-5 md:grid-cols-3">
+          {products.map((item) => <ProductCard key={item.name} {...item} />)}
         </div>
       </section>
     </main>
@@ -77,21 +82,24 @@ const Home = () => (
 const Catalogue = () => (
   <Layout>
     <main className="mx-auto max-w-7xl px-5 py-14 lg:px-8">
-      <PageTitle eyebrow="Catalogue" title="Des offres lisibles, prêtes à convertir." text="Chaque carte produit peut servir pour une carte cadeau, un pack Discord, un produit local ou une prestation rapide." />
-      <div className="mt-10 grid gap-5 md:grid-cols-3">
-        {products.map((item, index) => <OfferCard key={item.name} {...item} index={index} />)}
-      </div>
+      <PageTitle eyebrow="Produits" title="Une sélection courte, claire et facile à commander." text="Des cartes sobres pour mettre en avant les offres du moment, les prix, les lots et les produits phares." />
+      <div className="mt-10 grid gap-5 md:grid-cols-3">{products.map((item) => <ProductCard key={item.name} {...item} />)}</div>
     </main>
   </Layout>
 );
 
-const Process = () => (
+const Story = () => (
   <Layout>
     <main className="mx-auto max-w-7xl px-5 py-14 lg:px-8">
-      <PageTitle eyebrow="Process" title="Un parcours simple pour rassurer avant l'achat." text="Le template met en avant la disponibilité, les garanties et les étapes de commande sans surcharger le visiteur." />
-      <div className="mt-10 grid gap-4 lg:grid-cols-4">
-        {steps.map((step, index) => <div key={step} className="rounded-lg border border-border bg-card p-6 shadow-card transition-transform hover:-translate-y-1"><span className="text-sm font-bold text-accent">0{index + 1}</span><h2 className="mt-5 text-2xl font-bold">{step}</h2><p className="mt-3 text-sm leading-6 text-muted-foreground">Une étape courte, visible et facile à remplacer selon ton activité.</p></div>)}
-      </div>
+      <section className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr]">
+        <PageTitle eyebrow="La boutique" title="Un endroit simple, pensé pour les habitués." text="Cette page peut raconter l'origine du commerce, les horaires, les valeurs et ce qui rend l'accueil différent." />
+        <div className="grid gap-4 sm:grid-cols-2">
+          <InfoBlock icon={HeartHandshake} title="Proche client" text="Des messages directs, un ton humain et des infos pratiques visibles." />
+          <InfoBlock icon={Package} title="Commandes faciles" text="Retrait, réservation, livraison locale ou demande personnalisée." />
+          <InfoBlock icon={ShoppingBag} title="Offres du jour" text="Met en avant les produits frais ou les petits lots à écouler." />
+          <InfoBlock icon={Menu} title="Pages flexibles" text="Accueil, produits, histoire et contact prêts à adapter." />
+        </div>
+      </section>
     </main>
   </Layout>
 );
@@ -99,46 +107,42 @@ const Process = () => (
 const Contact = () => (
   <Layout>
     <main className="mx-auto max-w-7xl px-5 py-14 lg:px-8">
-      <section className="grid gap-8 rounded-lg border border-border bg-card p-6 shadow-lift lg:grid-cols-[0.9fr_1.1fr] lg:p-10">
-        <div><PageTitle eyebrow="Contact" title="Commande par message, sans friction." text="Remplace les liens par ton Discord, WhatsApp, Instagram ou formulaire." /></div>
-        <div className="rounded-md bg-background p-6 shadow-card">
-          <div className="grid gap-4 sm:grid-cols-2">
-            {[
-              [MessageCircle, "Discord", "@comptoirnova"],
-              [PackageCheck, "Livraison", "Codes ou retrait local"],
-              [TicketPercent, "Promos", "Lots hebdomadaires"],
-              [ShieldCheck, "Garantie", "Vendeur vérifié"],
-            ].map(([Icon, title, text]) => <Feature key={String(title)} icon={Icon as typeof MessageCircle} title={String(title)} text={String(text)} compact />)}
-          </div>
-          <Button asChild variant="storefront" size="lg" className="mt-6 w-full"><a href="https://discord.com" target="_blank" rel="noreferrer">Ouvrir Discord <ArrowRight className="size-4" /></a></Button>
+      <section className="rounded-lg border border-border bg-card p-7 shadow-lift lg:p-10">
+        <PageTitle eyebrow="Contact" title="Réserver, demander un lot ou passer dire bonjour." text="Une page contact directe avec téléphone, adresse, horaires et bouton de commande." />
+        <div className="mt-10 grid gap-5 md:grid-cols-3">
+          <InfoBlock icon={Phone} title="Téléphone" text="01 23 45 67 89" />
+          <InfoBlock icon={MapPin} title="Adresse" text="12 rue des Halles, centre-ville" />
+          <InfoBlock icon={Clock3} title="Horaires" text="Lundi — samedi, 7h à 19h" />
         </div>
+        <Button asChild variant="storefront" size="lg" className="mt-8"><a href="tel:0123456789">Appeler la boutique</a></Button>
       </section>
     </main>
   </Layout>
 );
 
-const ProductRow = ({ name, price, detail }: { name: string; price: string; detail: string }) => (
-  <div className="rounded-md border border-border bg-card p-4 transition-transform hover:-translate-y-0.5">
-    <div className="flex items-start justify-between gap-4"><h3 className="text-xl font-bold">{name}</h3><span className="rounded-md bg-secondary px-3 py-1 text-sm font-bold text-secondary-foreground">{price}</span></div>
-    <p className="mt-2 text-sm leading-6 text-muted-foreground">{detail}</p>
+const MiniStat = ({ icon: Icon, label, value }: { icon: typeof Clock3; label: string; value: string }) => (
+  <div className="rounded-lg border border-border bg-card p-4 shadow-card transition-transform hover:-translate-y-1">
+    <Icon className="mb-3 size-5 text-primary" />
+    <p className="text-xs font-bold uppercase tracking-normal text-muted-foreground">{label}</p>
+    <p className="mt-1 font-semibold">{value}</p>
   </div>
 );
 
-const Feature = ({ icon: Icon, title, text, compact = false }: { icon: typeof ShieldCheck; title: string; text: string; compact?: boolean }) => (
-  <div className={`rounded-lg border border-border bg-card shadow-card ${compact ? "p-4" : "p-6"}`}>
-    <Icon className="mb-4 size-6 text-primary" />
-    <h2 className="text-xl font-bold">{title}</h2>
-    <p className="mt-2 text-sm leading-6 text-muted-foreground">{text}</p>
-  </div>
-);
-
-const OfferCard = ({ name, price, detail, index }: { name: string; price: string; detail: string; index: number }) => (
+const ProductCard = ({ name, price, detail }: { name: string; price: string; detail: string }) => (
   <article className="rounded-lg border border-border bg-card p-6 shadow-card transition-transform hover:-translate-y-1">
-    <span className="text-sm font-bold text-accent">Lot 0{index + 1}</span>
-    <h2 className="mt-5 text-3xl font-bold">{name}</h2>
-    <p className="mt-4 text-muted-foreground">{detail}</p>
-    <div className="mt-8 flex items-center justify-between border-t border-border pt-5"><strong className="text-2xl">{price}</strong><Button variant="market" size="sm">Détails</Button></div>
+    <div className="mb-6 flex size-12 items-center justify-center rounded-md bg-muted text-primary"><ShoppingBag className="size-6" /></div>
+    <h2 className="text-2xl font-bold">{name}</h2>
+    <p className="mt-3 min-h-14 text-sm leading-6 text-muted-foreground">{detail}</p>
+    <div className="mt-6 flex items-center justify-between border-t border-border pt-5"><strong className="text-2xl">{price}</strong><Button variant="market" size="sm">Choisir</Button></div>
   </article>
+);
+
+const InfoBlock = ({ icon: Icon, title, text }: { icon: typeof HeartHandshake; title: string; text: string }) => (
+  <div className="rounded-lg border border-border bg-card p-6 shadow-card">
+    <Icon className="mb-4 size-6 text-primary" />
+    <h2 className="text-2xl font-bold">{title}</h2>
+    <p className="mt-3 text-sm leading-6 text-muted-foreground">{text}</p>
+  </div>
 );
 
 const PageTitle = ({ eyebrow, title, text }: { eyebrow: string; title: string; text: string }) => (
@@ -152,7 +156,7 @@ const PageTitle = ({ eyebrow, title, text }: { eyebrow: string; title: string; t
 const Index = () => {
   const path = window.location.pathname;
   if (path === "/catalogue") return <Catalogue />;
-  if (path === "/process") return <Process />;
+  if (path === "/histoire") return <Story />;
   if (path === "/contact") return <Contact />;
   return <Home />;
 };
