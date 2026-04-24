@@ -47,6 +47,15 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        shop: {
+          ink: "hsl(var(--shop-ink))",
+          paper: "hsl(var(--shop-paper))",
+          tile: "hsl(var(--shop-tile))",
+          seal: "hsl(var(--shop-seal))",
+          gold: "hsl(var(--shop-gold))",
+          coral: "hsl(var(--shop-coral))",
+          mint: "hsl(var(--shop-mint))",
+        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
@@ -64,6 +73,14 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       keyframes: {
+        "beam-drift": {
+          "0%, 100%": { transform: "translate3d(-2%, -1%, 0) rotate(0deg)" },
+          "50%": { transform: "translate3d(3%, 2%, 0) rotate(1deg)" },
+        },
+        "soft-rise": {
+          from: { opacity: "0", transform: "translateY(18px)" },
+          to: { opacity: "1", transform: "translateY(0)" },
+        },
         "accordion-down": {
           from: {
             height: "0",
@@ -82,8 +99,18 @@ export default {
         },
       },
       animation: {
+        "beam-drift": "beam-drift 14s ease-in-out infinite",
+        "soft-rise": "soft-rise 0.65s ease-out both",
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+      },
+      boxShadow: {
+        card: "var(--shadow-card)",
+        lift: "var(--shadow-lift)",
+      },
+      backgroundImage: {
+        hero: "var(--gradient-hero)",
+        cta: "var(--gradient-cta)",
       },
     },
   },
